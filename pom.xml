@@ -16,7 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <jib.maven.plugin.version>3.3.1</jib.maven.plugin.version>
-        <image.path>ghcr.io/vino9org:${project.version}</image.path>
+        <image.path>ghcr.io/vino9org/${project.artifactId}:${project.version}</image.path>
     </properties>
     <dependencies>
         <dependency>
@@ -64,16 +64,36 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-                    <plugin>
-                        <groupId>com.google.cloud.tools</groupId>
-                        <artifactId>jib-maven-plugin</artifactId>
-                        <version>${jib.maven.plugin.version}</version>
-                        <configuration>
-                            <to>
-                                <image>${image.path}</image>
-                            </to>
-                        </configuration>
-                    </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>${jib.maven.plugin.version}</version>
+                <configuration>
+                    <from>
+                        <platforms>
+                            <platform>
+                                <architecture>amd64</architecture>
+                                <os>linux</os>
+                            </platform>
+                            <platform>
+                                <architecture>arm64</architecture>
+                                <os>linux</os>
+                            </platform>
+                        </platforms>
+                    </from>
+                    <to>
+                        <image>${image.path}</image>
+                        <tags>
+                            <tag>latest</tag>
+                        </tags>
+                    </to>
+                    <container>
+                        <jvmFlags>
+                            <jvmFlag>-javaagent:/newrelic/newrelic.jar</jvmFlag>
+                        </jvmFlags>
+                    </container>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

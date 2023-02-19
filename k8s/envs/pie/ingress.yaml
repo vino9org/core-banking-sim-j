@@ -8,15 +8,15 @@ metadata:
 spec:
   ingressClassName: kong
   rules:
-  - host: pie4.lan
-    http:
-      paths:
-      - pathType: ImplementationSpecific
-        path: /core-banking
-        backend:
-          service:
-            name: corebanking-sim-j
-            port:
-              number: 8080
+    - host: pie4.lan
+      http:
+        paths:
+          - pathType: ImplementationSpecific
+            path: /core-banking
+            backend:
+              service:
+                name: corebanking-sim-j
+                port:
+                  number: 8080
 
 
