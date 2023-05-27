@@ -4,12 +4,25 @@ spring:
     host: localhost
     port: 6379
 
+info:
+  application:
+    name: "myapp"
+    author: "Li Lin"
+
 management:
   endpoints:
     web:
       exposure:
-        include: info
+        include: info, health
   info:
     git:
       enabled: true
       mode: simple
+    java:
+      enabled: true
+
+  endpoint:
+    health:
+      show-components: always
+      probes:
+        enabled: true
