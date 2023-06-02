@@ -17,17 +17,6 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: set image metadata
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: |
-            name=x,enable=false
-          tags: |
-            type=raw,value=develop-{{date 'YYYYMMDD-HHmmss' tz='Asia/Singapore'}}-{{sha}},enable=${{ github.ref == format('refs/heads/{0}', 'develop') }}
-          flavor: |
-            latest=false
-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
@@ -43,4 +32,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with Maven
-        run: mvn -B clean compile jib:build -DskipTests -Djib.to.tags="${{ steps.meta.outputs.tags }}"
+        run: mvn -B clean compile jib:build -DskipTests -Djib.to.tags="develop-${{date 'YYYYMMDD-HHmmss' tz='Asia/Singapore'}}-${{sha}}"
