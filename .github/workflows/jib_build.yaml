@@ -42,4 +42,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build with Maven
-        run: mvn -B clean compile jib:build -DskipTests -Djib.to.tags=${{ steps.meta.outputs.tags }}"
+        run: mvn -B clean compile jib:build -DskipTests -Djib.to.tags="${{ steps.meta.outputs.tags }}"
