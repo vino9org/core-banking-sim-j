@@ -21,7 +21,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: |
+            name=,enable=false
           tags: |
             type=raw,value=develop-{{date 'YYYYMMDD-HHmmss' tz='Asia/Singapore'}}-{{sha}},enable=${{ github.ref == format('refs/heads/{0}', 'develop') }}
           flavor: |
