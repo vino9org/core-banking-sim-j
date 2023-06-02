@@ -22,7 +22,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            name=,enable=false
+            name=x,enable=false
           tags: |
             type=raw,value=develop-{{date 'YYYYMMDD-HHmmss' tz='Asia/Singapore'}}-{{sha}},enable=${{ github.ref == format('refs/heads/{0}', 'develop') }}
           flavor: |
