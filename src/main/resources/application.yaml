@@ -1,3 +1,5 @@
+server:
+  port: 8000
 spring:
   redis:
     database: 0
