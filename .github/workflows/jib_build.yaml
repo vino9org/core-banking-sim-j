@@ -4,6 +4,8 @@ on:
       - develop
       - release/*
 
+  workflow_dispatch:
+
 jobs:
   build:
 
