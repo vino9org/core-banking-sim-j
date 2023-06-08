@@ -14,7 +14,7 @@
     <name>core-banking-sim-j</name>
     <description>core banking simulator written in Java</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <jib.maven.plugin.version>3.3.1</jib.maven.plugin.version>
         <image.path>ghcr.io/vino9org/${project.artifactId}:${project.version}</image.path>
     </properties>
